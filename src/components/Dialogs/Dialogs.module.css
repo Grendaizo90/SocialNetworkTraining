@@ -9,6 +9,7 @@
 
 .dialogsItems a {
  text-decoration: none;
+ color: greenyellow;
 }
 
 .dialogsItems .active {
