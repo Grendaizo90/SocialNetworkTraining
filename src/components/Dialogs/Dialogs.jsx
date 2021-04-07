@@ -5,7 +5,7 @@ import s from './Dialogs.module.css';
 
 
 const Dialogs = (props) => {
-  const { dialogs, messages } = props;
+  const { dialogs, messages } = props.state;
 
   const dialogsElements = dialogs.map((d, i) => 
     <DialogItem name={d.name} id={d.id} key={i} />

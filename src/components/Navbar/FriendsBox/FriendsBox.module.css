@@ -1,0 +1,10 @@
+.friendsWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.friendsGrid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
