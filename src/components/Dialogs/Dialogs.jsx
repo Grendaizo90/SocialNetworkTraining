@@ -5,7 +5,19 @@ import s from './Dialogs.module.css';
 
 
 const Dialogs = (props) => {
-  const { dialogs, messages } = props.state;
+  const { dialogs, messages, newMessageText } = props.dialogsPage;
+
+  let newMessageElement = React.createRef();
+
+  const sendMessage = () => {
+    let text = newMessageElement.current.value;
+    props.sendMessage(text);
+  }
+
+  const onMessageChange = () => {
+    let text = newMessageElement.current.value;
+    props.updateNewMessageText(text);
+  }
 
   const dialogsElements = dialogs.map((d, i) => 
     <DialogItem name={d.name} id={d.id} key={i} />
@@ -14,13 +26,6 @@ const Dialogs = (props) => {
   const messagesElements = messages.map((m, i) =>
     <Message message={m.message} id={m.id} key={i} />
   );
-
-  let newMessageElement = React.createRef();
-
-  const sendMessage = () => {
-    let text = newMessageElement.current.value;
-    alert(text);
-  }
 
   return (
     <div className={s.dialogs}>
@@ -31,7 +36,10 @@ const Dialogs = (props) => {
         {messagesElements}
       </div>
       <div>
-        <textarea ref={newMessageElement}></textarea>
+        <textarea
+          onChange={onMessageChange}
+          ref={newMessageElement}
+          value={newMessageText} />
       </div>
       <div>
         <button onClick={sendMessage}>Send</button>
