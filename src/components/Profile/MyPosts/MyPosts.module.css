@@ -5,3 +5,20 @@
 .posts {
   margin-top: 10px;
 }
+
+.input {
+  padding: 10px;
+  width: 180px;
+  height: 50px;
+  resize: none;
+  border: none;
+  border-radius: 10px;
+}
+
+.addBtn {
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  background-color: rgb(55, 0, 255);
+  color: white;
+}

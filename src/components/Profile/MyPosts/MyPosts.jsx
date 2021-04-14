@@ -26,13 +26,15 @@ const MyPosts = (props) => {
       <h3>My posts</h3>
       <div>
         <div>
-          <textarea
+          <textarea className={s.input}
             onChange={onPostChange}
             ref={newPostElement}
             value={props.newPostText} />
         </div>
         <div>
-          <button onClick={addPost}>Add post</button>
+          <button
+            className={s.addBtn}
+            onClick={addPost}>Add post</button>
         </div>
       </div>
       <div className={s.posts}>
