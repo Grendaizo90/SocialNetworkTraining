@@ -10,13 +10,13 @@ const Dialogs = (props) => {
   let newMessageElement = React.createRef();
 
   const sendMessage = () => {
-    let text = newMessageElement.current.value;
-    props.sendMessage(text);
+    // let text = newMessageElement.current.value;
+    props.dispatch({ type: 'SEND-MESSAGE' });
   }
 
   const onMessageChange = () => {
     let text = newMessageElement.current.value;
-    props.updateNewMessageText(text);
+    props.dispatch({ type: 'UPDATE-NEW-MESSAGE-TEXT', newText: text});
   }
 
   const dialogsElements = dialogs.map((d, i) => 
