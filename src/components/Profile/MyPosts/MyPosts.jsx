@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from './Post/Post';
 import s from './MyPosts.module.css';
-import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../redux/state';
+import { addPostCreator, updateNewPostTextCreator } from '../../../redux/state';
 
 
 const MyPosts = (props) => {
@@ -10,16 +10,13 @@ const MyPosts = (props) => {
     <Post id={p.id} message={p.message} likes={p.likes} key={i} />
   );
 
-  let newPostElement = React.createRef();
-
   const addPost = () => {
-    // let text = newPostElement.current.value;
-    props.dispatch(addPostActionCreator());
+    props.dispatch(addPostCreator());
   };
 
-  const onPostChange = () => {
-    let text = newPostElement.current.value;
-    props.dispatch(updateNewPostTextActionCreator(text));
+  const onPostChange = (e) => {
+    let text = e.target.value;
+    props.dispatch(updateNewPostTextCreator(text));
   }
 
   return (
@@ -27,9 +24,10 @@ const MyPosts = (props) => {
       <h3>My posts</h3>
       <div>
         <div>
-          <textarea className={s.input}
+          <textarea
+            placeholder="Write something"
+            className={s.input}
             onChange={onPostChange}
-            ref={newPostElement}
             value={props.newPostText} />
         </div>
         <div>
