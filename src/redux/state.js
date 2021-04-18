@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST',
+      UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT',
+      SEND_MESSAGE = 'SEND-MESSAGE',
+      UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+
 let store = {
   _state: {
   
@@ -72,6 +77,13 @@ let store = {
     }
   }
 }
+
+export const addPostActionCreator = () => ({ type: ADD_POST });
+export const updateNewPostTextActionCreator = (text) => 
+    ({ type: UPDATE_NEW_POST_TEXT, newText: text });
+export const sendMessageActionCreator = () => ({ type: SEND_MESSAGE });
+export const updateNewMessageTextActionCreator = (text) =>
+    ({ type: UPDATE_NEW_MESSAGE_TEXT, newText: text });
 
 export default store;
 window.store = store;
