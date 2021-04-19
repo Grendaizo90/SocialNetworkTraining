@@ -1,7 +1,7 @@
-const ADD_POST = 'ADD-POST',
-  UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT',
-  SEND_MESSAGE = 'SEND-MESSAGE',
-  UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+import dialogsReducer from "./dialogsReducer";
+import profileReducer from "./profileReducer";
+import sidebarReducer from "./sidebarReducer";
+
 
 let store = {
   _state: {
@@ -51,46 +51,13 @@ let store = {
   },
 
   dispatch(action) {
-    switch (action.type) {
-      case 'ADD-POST':
-        let newPost = {
-          id: this._state.profilePage.posts.length + 1,
-          message: this._state.profilePage.newPostText,
-          likes: 0
-        };
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this._callSubscriber(this._state);
-        break;
-      case 'UPDATE-NEW-POST-TEXT':
-        this._state.profilePage.newPostText = action.newText;
-        this._callSubscriber(this._state);
-        break;
-      case 'SEND-MESSAGE':
-        let newMessage = {
-          id: this._state.dialogsPage.messages.length + 1,
-          message: this._state.dialogsPage.newMessageText
-        };
-        this._state.dialogsPage.messages.push(newMessage);
-        this._state.dialogsPage.newMessageText = '';
-        this._callSubscriber(this._state);
-        break;
-      case 'UPDATE-NEW-MESSAGE-TEXT':
-        this._state.dialogsPage.newMessageText = action.newText;
-        this._callSubscriber(this._state);
-        break;
-      default:
-        // Nothing
-    }
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+    this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+
+    this._callSubscriber(this._state);
   }
 }
-
-export const addPostCreator = () => ({ type: ADD_POST });
-export const updateNewPostTextCreator = (text) =>
-  ({ type: UPDATE_NEW_POST_TEXT, newText: text });
-export const sendMessageCreator = () => ({ type: SEND_MESSAGE });
-export const updateNewMessageTextCreator = (text) =>
-  ({ type: UPDATE_NEW_MESSAGE_TEXT, newText: text });
 
 export default store;
 window.store = store;
