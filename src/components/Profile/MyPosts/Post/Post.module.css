@@ -1,9 +1,18 @@
-.item {
-  color: greenyellow;
+.post {
+  display: flex;
+  justify-content:flex-start;
+  color: darkslategray;
+  padding: 7px;
 }
 
-.item img {
-  width: 60px;
-  height: 60px;
-  border-radius: 30px;
+.post img {
+  width: 45px;
+  height: 45px;
+  border-radius: 25px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
 }
