@@ -5,8 +5,8 @@ import s from './MyPosts.module.css';
 
 const MyPosts = (props) => {
 
-  const postsElements = props.posts.map((p, i) =>
-    <Post id={p.id} message={p.message} likes={p.likes} key={i} />
+  const postsElements = props.posts.map( p =>
+    <Post id={p.id} message={p.message} likes={p.likes} key={p.id} />
   );
 
   const onAddPost = () => {

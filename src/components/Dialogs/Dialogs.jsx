@@ -16,12 +16,12 @@ const Dialogs = (props) => {
     props.updateNewMessageText(text);
   }
 
-  const dialogsElements = dialogs.map((d, i) =>
-    <DialogItem name={d.name} id={d.id} key={i} />
+  const dialogsElements = dialogs.map( d =>
+    <DialogItem name={d.name} id={d.id} key={d.id} />
   );
 
-  const messagesElements = messages.map((m, i) =>
-    <Message message={m.message} id={m.id} key={i} />
+  const messagesElements = messages.map( m =>
+    <Message message={m.message} id={m.id} key={m.id} />
   );
 
   return (

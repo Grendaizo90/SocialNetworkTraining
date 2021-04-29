@@ -3,33 +3,6 @@ import { addPostCreator, updateNewPostTextCreator } from '../../../redux/profile
 import MyPosts from './MyPosts';
 
 
-// const SMyPostsContainer = (props) => {
-
-//   return (
-//     <StoreContext.Consumer>
-//       { store => {
-//         const state = store.getState();
-
-//         const addPost = () => {
-//           store.dispatch(addPostCreator());
-//         }
-
-//         const onPostChange = (text) => {
-//           store.dispatch(updateNewPostTextCreator(text));
-//         }
-
-//         return (
-//           <MyPosts
-//             updateNewPostText={onPostChange}
-//             addPost={addPost}
-//             posts={state.profilePage.posts}
-//             newPostText={state.profilePage.newPostText} />
-//         )
-//       }}
-//     </StoreContext.Consumer>
-//   )
-// }
-
 const mapStateToProps = (state) => {
   return {
     posts: state.profilePage.posts,
