@@ -7,8 +7,8 @@ const mapStateToProps = (state) => {
   return {
     posts: state.profilePage.posts,
     newPostText: state.profilePage.newPostText
-  }
-}
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -18,8 +18,8 @@ const mapDispatchToProps = (dispatch) => {
     updateNewPostText: (text) => {
       dispatch(updateNewPostTextCreator(text));
     }
-  }
-}
+  };
+};
 
 const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
 
