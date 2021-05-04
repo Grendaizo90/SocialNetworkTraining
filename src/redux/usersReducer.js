@@ -3,24 +3,7 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
   
 const initialState = {
-  users: [
-    {
-      id: 2,
-      photoUrl: 'https://cs6.pikabu.ru/avatars/130/v130979.jpg',
-      followed: true,
-      fullName: 'Grisha',
-      status: 'sr',
-      location: { city: 'Kiev', country: 'Ukraine' }
-    },
-    {
-      id: 3,
-      photoUrl: 'https://cs6.pikabu.ru/avatars/130/v130979.jpg',
-      followed: true,
-      fullName: 'Taisha',
-      status: 'md',
-      location: { city: 'Los Angeles', country: 'USA' }
-    },
-  ]
+  users: []
 };
 
 const usersReducer = (state = initialState, action) => {
