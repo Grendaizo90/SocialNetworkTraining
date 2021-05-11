@@ -7,3 +7,7 @@
   font-weight: bold;
   text-decoration: underline;
 }
+
+.loading {
+  max-width: 30px;
+}
