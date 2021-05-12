@@ -1,3 +1,13 @@
 .descriptionBlock {
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.descriptionBlock img {
+  max-width: 300px;
+}
+.descriptionBlock a {
+  text-decoration: none;
+  color: brown;
+  font-weight: bold;
 }
