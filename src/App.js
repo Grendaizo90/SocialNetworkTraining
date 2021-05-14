@@ -18,22 +18,22 @@ const App = (props) => {
         <Navbar />
         <div className="app-wrapper-content">
           <Route
-            path="/users"
+            path="/users/"
             render={() => <UsersContainer />} />
           <Route
-            path="/dialogs"
+            path="/dialogs/"
             render={() => <DialogsContainer />} />
           <Route
-            path="/profile"
+            path="/profile/:userId?"
             render={() => <ProfileContainer />} />
           <Route
-            path="/news"
+            path="/news/"
             render={() => <News />} />
           <Route
-            path="/music"
+            path="/music/"
             render={() => <Music />} />
           <Route
-            path="/settings"
+            path="/settings/"
             render={() => <Settings />} />
         </div>
       </div>
