@@ -3,6 +3,28 @@
   border-radius: 30px;
 }
 
+.users {
+  /* display: flex;
+  flex-wrap: wrap;
+  align-items: start; */
+}
+
+.userCard {
+  display: flex;
+  margin-bottom: 7px;
+  padding: 7px;
+  width: fit-content;
+  background-color: cornflowerblue;
+  border-radius: 10px;
+}
+
+.followBtn {
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  width: 60px;
+}
+
 .selectedPage {
   font-weight: bold;
   text-decoration: underline;
