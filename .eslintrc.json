@@ -4,6 +4,7 @@
         "es2021": true,
         "node": true
     },
+    "parser": "babel-eslint",
     "extends": [
         "plugin:react/recommended"
         // "airbnb"
@@ -20,7 +21,7 @@
     ],
     "rules": {
         "react/prop-types": "off",
-        "semi": ["warn", "as-needed"]
+        "semi": "off"
         // "linebreak-style": "off",
         // "no-unused-vars": "warn",
         // "object-property-newline": "warn",
