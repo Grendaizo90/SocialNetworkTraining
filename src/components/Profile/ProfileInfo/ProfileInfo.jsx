@@ -21,5 +21,3 @@ const ProfileInfo = (props) => {
 }
 
 export default ProfileInfo;
-
-// Вытащить инфу юзера из апишки

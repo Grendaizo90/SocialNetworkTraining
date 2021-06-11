@@ -16,13 +16,6 @@ export const usersAPI = {
       });
   },
 
-  authMe: () => {
-    return instance.get(`auth/me`)
-      .then(response => {
-        return response.data;
-      })
-  },
-
   followUser: (userId) => {
     return instance.post(`follow/${userId}`)
       .then(response => {
@@ -35,7 +28,21 @@ export const usersAPI = {
       .then(response => {
         return response.data;
       });
+  },
+
+  getProfile: (userId) => {
+    return instance.get(`profile/${userId}`)
+      .then(response => {
+        return response.data;
+      });
   }
 };
 
-// аналогично сделать follow, auth и другие запросы
+export const authAPI = {
+  me: () => {
+    return instance.get(`auth/me`)
+      .then(response => {
+        return response.data;
+      })
+  }
+};
