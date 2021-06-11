@@ -9,6 +9,7 @@ import Settings from './components/SettingsPage/SettingsPage';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
+import LoginPage from './components/Login/Login';
 
 const App = (props) => {
   return (
@@ -17,6 +18,9 @@ const App = (props) => {
         <HeaderContainer />
         <Navbar />
         <div className="app-wrapper-content">
+          <Route
+            path="/login/"
+            render={() => <LoginPage />} />
           <Route
             path="/users/"
             render={() => <UsersContainer />} />
