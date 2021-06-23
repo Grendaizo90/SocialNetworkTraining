@@ -11,16 +11,13 @@ import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import LoginPage from './components/Login/Login';
 
-const App = (props) => {
+const App = () => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
         <HeaderContainer />
         <Navbar />
         <div className="app-wrapper-content">
-          <Route
-            path="/login/"
-            render={() => <LoginPage />} />
           <Route
             path="/users/"
             render={() => <UsersContainer />} />
@@ -39,6 +36,9 @@ const App = (props) => {
           <Route
             path="/settings/"
             render={() => <Settings />} />
+          <Route
+            path="/login/"
+            render={() => <LoginPage />} />
         </div>
       </div>
     </BrowserRouter>
