@@ -57,7 +57,22 @@ export const authAPI = {
   me: () => {
     return instance.get(`auth/me`)
       .then(response => {
-        return response.data;
+        if (response.data.resultCode === 0) {
+          return response.data;
+        }
       })
+  },
+
+  login: (email, password, rememberMe, captcha) => {
+    return instance.post(`/auth/login`, {
+      email: email,
+      password: password,
+      rememberMe,
+      captcha
+    }).then(response => {
+      if (response.data.resultCode === 0) {
+        return response.data;
+      }
+    });
   }
 };

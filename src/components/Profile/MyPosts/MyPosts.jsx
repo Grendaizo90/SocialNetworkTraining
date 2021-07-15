@@ -1,45 +1,56 @@
 import React from 'react';
 import Post from './Post/Post';
 import s from './MyPosts.module.css';
+import { useFormik } from 'formik';
 
 
 const MyPosts = (props) => {
 
-  const postsElements = props.posts.map( p =>
+  const postsElements = props.posts.map(p =>
     <Post id={p.id} message={p.message} likes={p.likes} key={p.id} />
   );
 
-  const onAddPost = () => {
-    props.addPost();
+  const onSubmitPost = (values) => {
+    props.addPost(values.postText);
   };
-
-  const onPostChange = (e) => {
-    let text = e.target.value;
-    props.updateNewPostText(text);
-  }
 
   return (
     <div className={s.postsBlock}>
       <h3>My posts</h3>
-      <div>
-        <div>
-          <textarea
-            placeholder="Write something"
-            className={s.input}
-            onChange={onPostChange}
-            value={props.newPostText} />
-        </div>
-        <div>
-          <button
-            className={s.addBtn}
-            onClick={onAddPost}>Add post</button>
-        </div>
-      </div>
+      <AddPostsForm onSubmit={onSubmitPost} />
       <div className={s.posts}>
         {postsElements}
       </div>
     </div>
   )
 }
+
+const AddPostsForm = (props) => {
+  const formik = useFormik({
+    initialValues: {
+      postText: ''
+    },
+    onSubmit: props.onSubmit
+  })
+
+  return (
+    <form onSubmit={formik.handleSubmit}>
+      <div>
+        <input
+          placeholder="Write something"
+          name="postText"
+          className={s.input}
+          onChange={formik.handleChange}
+          value={formik.values.postText} />
+      </div>
+      <div>
+        <button
+          type="submit"
+          className={s.addBtn}>Add post</button>
+      </div>
+    </form>
+  )
+}
+
 
 export default MyPosts;

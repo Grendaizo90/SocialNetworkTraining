@@ -1,13 +1,18 @@
 .post {
   display: flex;
   justify-content:flex-start;
-  color: darkslategray;
+  align-items: center;
   padding: 7px;
+  margin-bottom: 5px;
+  width: fit-content;
+  border: 1px solid black;
+  border-radius: 10px;
 }
 
 .post img {
   width: 45px;
   height: 45px;
+  margin-right: 10px;
   border-radius: 25px;
 }
 
