@@ -25,12 +25,12 @@ const MyPosts = (props) => {
   )
 }
 
-const AddPostsForm = (props) => {
+const AddPostsForm = ({onSubmit}) => {
   const formik = useFormik({
     initialValues: {
       postText: ''
     },
-    onSubmit: props.onSubmit
+    onSubmit
   })
 
   return (

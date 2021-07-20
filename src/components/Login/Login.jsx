@@ -1,5 +1,6 @@
-import { useFormik } from "formik";
 import React from "react";
+import { useFormik } from "formik";
+import s from "./Login.module.css";
 
 // Formik initials
 
@@ -15,15 +16,15 @@ const onSubmit = (values) => {
 
 const validate = (values) => {
   let errors = {};
-    
-  if (!values.name) {
-    errors.name = 'Required';
+
+  if (!values.login) {
+    errors.login = 'Required';
   }
 
   if (!values.password) {
     errors.password = 'Required';
   }
-
+  
   return errors;
 };
 
@@ -34,25 +35,33 @@ const LoginForm = () => {
   const formik = useFormik({
     initialValues,
     onSubmit,
-    // validate
+    validate
   });
 
-  // Атрибут name должен совпадать с value={formik.values.XXX}
+
   return (
     <form onSubmit={formik.handleSubmit}>
-      <div>
+      <div className={s.inputField}>
         <input
           placeholder={'Login'}
           name={'login'}
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           value={formik.values.login} />
+          {formik.touched.login && formik.errors.login
+            ? <div className={s.inputError}>{formik.errors.login}</div>
+            : null}
       </div>
-      <div>
+      <div className={s.inputField}>
         <input
           placeholder={'Password'}
           name={'password'}
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           value={formik.values.password} />
+          {formik.touched.password && formik.errors.password
+            ? <div className={s.inputError}>{formik.errors.password}</div>
+            : null}
       </div>
       <div>
         <input

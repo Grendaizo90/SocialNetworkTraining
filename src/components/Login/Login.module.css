@@ -1,0 +1,10 @@
+.inputField {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.inputError {
+  font-size: 14px;
+  font-weight: bold;
+  color: rgb(255, 152, 152);
+}
