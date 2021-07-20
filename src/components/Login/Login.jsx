@@ -1,40 +1,39 @@
 import React from "react";
 import { useFormik } from "formik";
 import s from "./Login.module.css";
+import { connect } from "react-redux";
+import { login } from "../../redux/authReducer";
+import { Redirect } from "react-router-dom";
 
 // Formik initials
 
 const initialValues = {
-  login: '',
+  email: '',
   password: '',
   rememberMe: false
-};
-
-const onSubmit = (values) => {
-  console.log('Form data:', values);
 };
 
 const validate = (values) => {
   let errors = {};
 
-  if (!values.login) {
+  if (!values.email) {
     errors.login = 'Required';
   }
 
   if (!values.password) {
     errors.password = 'Required';
   }
-  
+
   return errors;
 };
 
 // Components
 
-const LoginForm = () => {
+const LoginForm = (props) => {
 
   const formik = useFormik({
     initialValues,
-    onSubmit,
+    onSubmit: props.onSubmit,
     validate
   });
 
@@ -43,25 +42,27 @@ const LoginForm = () => {
     <form onSubmit={formik.handleSubmit}>
       <div className={s.inputField}>
         <input
-          placeholder={'Login'}
-          name={'login'}
+          placeholder={'E-mail'}
+          name={'email'}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.login} />
-          {formik.touched.login && formik.errors.login
-            ? <div className={s.inputError}>{formik.errors.login}</div>
-            : null}
+          value={formik.values.email} />
+        {formik.touched.email && formik.errors.email
+          ? <div className={s.inputError}>{formik.errors.email}</div>
+          : null}
       </div>
       <div className={s.inputField}>
         <input
           placeholder={'Password'}
           name={'password'}
+          type={'password'}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password} />
-          {formik.touched.password && formik.errors.password
-            ? <div className={s.inputError}>{formik.errors.password}</div>
-            : null}
+        {formik.touched.password && formik.errors.password
+          ? <div className={s.inputError}>{formik.errors.password}</div>
+          : null
+        }
       </div>
       <div>
         <input
@@ -77,13 +78,25 @@ const LoginForm = () => {
   );
 };
 
-const Login = () => {
+const Login = (props) => {
+  const onSubmit = (values) => {
+    props.login(values.email, values.password, values.rememberMe);
+  }
+
+  if (props.isAuth) {
+    return <Redirect to='/profile' />
+  }
+
   return (
     <div>
       <h1>LOGIN</h1>
-      <LoginForm />
+      <LoginForm onSubmit={onSubmit} />
     </div>
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => ({
+   isAuth: state.auth.isAuth 
+});
+
+export default connect(mapStateToProps, { login })(Login);
